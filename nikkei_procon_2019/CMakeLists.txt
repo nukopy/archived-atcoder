@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.1)
+project(nikkei_procon_2019)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++14)
+
+add_executable(nikkei_procon2019_A nikkei_procon2019_A.cpp)
+add_executable(nikkei_procon2019_B nikkei_procon2019_B.cpp)
+add_executable(nikkei_procon2019_C nikkei_procon2019_C.cpp)
+add_executable(nikkei_procon2019_D nikkei_procon2019_D.cpp)
+add_executable(nikkei_procon2019_E nikkei_procon2019_E.cpp)
+add_executable(nikkei_procon2019_F nikkei_procon2019_F.cpp)
