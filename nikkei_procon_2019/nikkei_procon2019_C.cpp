@@ -6,6 +6,7 @@
 #include <iterator>  // std::back_inserter()
 #include <set>
 #include <map>
+#include <tuple>  // std::tuple std::get
 #include <algorithm>  // std::copy()
 #include <functional>  // std::greater<T>()
 #include <utility>  // std::swap()
@@ -36,13 +37,30 @@ int main() {
     ios::sync_with_stdio(false);
 
     // input
-    int N, M;
-    cin >> N >> M;
-    vector<int> vec(N);
-    REP(i, N) cin >> vec[i];
+    ll N, taka, aoki;
+    cin >> N;
+    vector<tuple<ll, ll, ll>> vec(N);
+    REP(i, N) {
+        cin >> taka >> aoki;
+        vec[i] = make_tuple(taka, aoki, taka+aoki);
+    }
+    
+    sort(vec.begin(), vec.end(),
+        [](tuple<ll , ll , ll> &front_tup, tuple<ll , ll , ll> &back_tup) {
+            return get<2>(front_tup) > get<2>(back_tup);
+        }
+    );
     
     // calculation
-    
+    taka = aoki = 0;
+    REP(i, N) {
+        if (i%2 == 0) {
+            taka += get<0>(vec[i]);
+        } else {
+            aoki += get<1>(vec[i]);
+        }
+    }
+    cout << taka - aoki << "\n";
     
     return 0;
 }

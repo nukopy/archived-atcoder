@@ -1,4 +1,4 @@
-// nikkei_procon2019_B
+// ABC117_D
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -27,7 +27,7 @@ using namespace std;
 #define SUM(vec) accumulate(ALL((vec)), 0)  // 0 は初期値
 #define COPY(vec1, vec2) copy(ALL(vec1), back_inserter(vec2))  // vec1をvec2にコピーする vec2は空にしておく必要あり
 typedef long long ll;
-
+typedef unsigned long long ull;
 const int MOD = 1000000007;  // 1 000 000 007
 
 
@@ -36,28 +36,34 @@ int main() {
     ios::sync_with_stdio(false);
 
     // input
-    int N;
-    string A, B, C;
-    cin >> N >> A >> B >> C;
+    ull N, K;
+    cin >> N >> K;
+    vector<ull> vec(N);
+    REP(i, N) cin >> vec[i];
     
     // calculation
-    vector<int> num(N, 3);
-    REP(i, N) {
-        if (A[i] == B[i]) num[i]--;
-        if (B[i] == C[i]) num[i]--;
-        if (C[i] == A[i]) num[i]--;
-    }
-    int res = 0;
-    REP(i, N) {
-        if (num[i] == 3) {
-            res += 2;
-        } else if (num[i] == 2) {
-            res += 1;
-        } else if (num[i] == 0) {
-            res += 0;
+    const ull bit = 64;
+    ull sum = 0;
+    stringstream ss;
+    bitset<bit> bs;
+    ull max_vec = *MAX(vec);
+    if (N == 1) {
+        bs = bitset<bit>(K)^bitset<bit>(vec[0]);
+        cout << bs.to_ullong() << "\n";
+    } else if (max_vec >= K) {
+        REP(i, N) {
+            bs = bitset<bit>(K)^bitset<bit>(vec[i]);
+            sum += bs.to_ullong();
         }
+        cout << sum << "\n";
+    } else {
+        REP(i, N) {
+            bs = bitset<bit>(K)^bitset<bit>(vec[i]);
+            sum += bs.to_ullong();
+        }
+        cout << sum << "\n";
     }
-    cout << res << "\n";
+    
     
     return 0;
 }

@@ -1,4 +1,4 @@
-// nikkei_procon2019_B
+// ABC117_B
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -37,27 +37,23 @@ int main() {
 
     // input
     int N;
-    string A, B, C;
-    cin >> N >> A >> B >> C;
+    cin >> N;
+    vector<int> vec(N);
+    REP(i, N) cin >> vec[i];
     
     // calculation
-    vector<int> num(N, 3);
-    REP(i, N) {
-        if (A[i] == B[i]) num[i]--;
-        if (B[i] == C[i]) num[i]--;
-        if (C[i] == A[i]) num[i]--;
+    sort(vec.begin(), vec.end());
+    int sum = 0;
+    REP(i, N-1) {
+        sum += vec[i];
     }
-    int res = 0;
-    REP(i, N) {
-        if (num[i] == 3) {
-            res += 2;
-        } else if (num[i] == 2) {
-            res += 1;
-        } else if (num[i] == 0) {
-            res += 0;
-        }
+    
+    if (sum > vec[N-1]) {
+        cout << "Yes" << "\n";
+    } else {
+        cout << "No" << "\n";
     }
-    cout << res << "\n";
+    
     
     return 0;
 }

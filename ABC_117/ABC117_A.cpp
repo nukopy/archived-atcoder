@@ -1,4 +1,4 @@
-// nikkei_procon2019_B
+// ABC117_A
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -36,28 +36,16 @@ int main() {
     ios::sync_with_stdio(false);
 
     // input
-    int N;
-    string A, B, C;
-    cin >> N >> A >> B >> C;
+    double N, M;
+    cin >> N >> M;
+//    vector<int> vec(N);
+//    REP(i, N) cin >> vec[i];
     
     // calculation
-    vector<int> num(N, 3);
-    REP(i, N) {
-        if (A[i] == B[i]) num[i]--;
-        if (B[i] == C[i]) num[i]--;
-        if (C[i] == A[i]) num[i]--;
-    }
-    int res = 0;
-    REP(i, N) {
-        if (num[i] == 3) {
-            res += 2;
-        } else if (num[i] == 2) {
-            res += 1;
-        } else if (num[i] == 0) {
-            res += 0;
-        }
-    }
-    cout << res << "\n";
+    
+    cout << N/M << "\n";
+    
+//    cout << N << M << "\n";
     
     return 0;
 }

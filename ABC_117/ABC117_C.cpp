@@ -1,4 +1,4 @@
-// nikkei_procon2019_B
+// ABC117_C
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -36,28 +36,47 @@ int main() {
     ios::sync_with_stdio(false);
 
     // input
-    int N;
-    string A, B, C;
-    cin >> N >> A >> B >> C;
+    ll koma, num_pos;
+    cin >> koma >> num_pos;
+    vector<ll> positions(num_pos);
+    REP(i, num_pos) cin >> positions[i];
     
     // calculation
-    vector<int> num(N, 3);
-    REP(i, N) {
-        if (A[i] == B[i]) num[i]--;
-        if (B[i] == C[i]) num[i]--;
-        if (C[i] == A[i]) num[i]--;
-    }
-    int res = 0;
-    REP(i, N) {
-        if (num[i] == 3) {
-            res += 2;
-        } else if (num[i] == 2) {
-            res += 1;
-        } else if (num[i] == 0) {
-            res += 0;
+    if (koma == 1) {
+        cout << *MAX(positions) - *MIN(positions) << "\n";
+    } else if (num_pos == 1) {
+        cout << 0 << "\n";
+    } else if (koma >= num_pos){
+        cout << 0 << "\n";
+    } else {
+        sort(positions.begin(), positions.end());  // down ->
+        vector<ll> diff(num_pos-1);
+        for (ll i = 1; i < num_pos; ++i) {
+            diff[i-1] = positions[i] - positions[i-1];
         }
+        
+//        // 両端から駒を抜いていく (koma-1)個分
+//        ll id_front = 0, id_back = num_pos-2;
+//        REP(i, koma-1) {
+//            if (diff[id_front] >= diff[id_back]) {
+//                id_front++;
+//            } else {
+//                id_back--;
+//            }
+//        }
+//
+//        // last
+        ll sum = 0;
+//        for (ll j = id_front; j <= id_back; ++j) {
+//            sum += diff[j];
+//        }
+
+        sort(diff.begin(), diff.end());
+        for (int j = 0; j < num_pos-1-koma+1; ++j) {
+            sum += diff[j];
+        }
+        cout << sum << "\n";
     }
-    cout << res << "\n";
     
     return 0;
 }

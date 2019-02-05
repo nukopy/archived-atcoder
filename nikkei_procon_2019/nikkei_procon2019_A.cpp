@@ -1,4 +1,3 @@
-// nikkei_procon2019_A
 #include <iostream>
 #include <cstdio>
 #include <string>
@@ -36,11 +35,19 @@ int main() {
     ios::sync_with_stdio(false);
 
     // input
-    int N, M;
-    cin >> N >> M;
+    int N, A, B;
+    cin >> N >> A >> B;
+//    vector<int> vec(N);
+//    REP(i, N) cin >> vec[i];
     
     // calculation
-    cout << N + M << "\n";
+    if (A + B > N) {
+        cout << min(A, B) << ' ' << N - ((N-A)+(N-B)) << "\n";
+    } else if (A+B == N){
+        cout << min(A, B) << ' ' << 0 << "\n";
+    } else if (A+B < N) {
+        cout << min(A, B) << ' ' << 0 << "\n";
+    }
     
     return 0;
 }
