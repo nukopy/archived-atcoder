@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.1)
+project(AGC_014)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++14)
+
+add_executable(AGC014_A AGC014_A.cpp)
+add_executable(AGC014_B AGC014_B.cpp)
+add_executable(AGC014_C AGC014_C.cpp)
+add_executable(AGC014_D AGC014_D.cpp)
+add_executable(AGC014_E AGC014_E.cpp)
+add_executable(AGC014_F AGC014_F.cpp)

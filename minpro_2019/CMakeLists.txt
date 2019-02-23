@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.1)
+project(minpro_2019)
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} -std=c++14)
+
+add_executable(minpro2019_A minpro2019_A.cpp)
+add_executable(minpro2019_B minpro2019_B.cpp)
+add_executable(minpro2019_C minpro2019_C.cpp)
+add_executable(minpro2019_D minpro2019_D.cpp)
+add_executable(minpro2019_E minpro2019_E.cpp)
+add_executable(minpro2019_F minpro2019_F.cpp)
